@@ -21,6 +21,8 @@ import a1 from '../assets/a1.jpg'
 import a2 from '../assets/a2.png'
 import a3 from '../assets/a3.png'
 import a4 from '../assets/a4.png'
+import { Header } from '../components/Header'
+import { Footer } from '../components/Footer'
 
 const cardVariants = {
   hover: {
@@ -53,7 +55,9 @@ const menuVariants = {
     opacity: 0,
     y: -20,
     transition: {
-      duration: 0.2
+      duration: 0.2,
+      staggerChildren: 0.05,
+      staggerDirection: -1
     }
   }
 };
@@ -71,7 +75,7 @@ const menuItemVariants = {
   }
 };
 
-export default function TourismPage() {
+export function TourismPage() {
   const [adults, setAdults] = useState(1)
   const [children, setChildren] = useState(0)
   const [currentSlide, setCurrentSlide] = useState(0)
@@ -151,114 +155,9 @@ export default function TourismPage() {
   const cardSprings = Array(6).fill(null).map(() => createCardSpring());
 
   return (
-    <main className="min-h-screen bg-[#FAFAFA]">
-      {/* Modals */}
-      <SignupModal isOpen={isSignupOpen} onClose={() => setIsSignupOpen(false)} />
-
-      {/* Header */}
-      <header className="fixed top-0 w-full bg-white/80 backdrop-blur-md z-50 border-b border-gray-100">
-        <div className="container mx-auto px-4">
-          <div className="flex items-center justify-between h-16 md:h-20">
-            {/* Logo */}
-            <motion.a 
-              href="/"
-              className="text-xl md:text-2xl font-bold"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              Logo Here
-            </motion.a>
-
-            {/* Desktop Navigation */}
-            <nav className="hidden md:flex items-center space-x-8">
-              <motion.a 
-                href="/"
-                className="text-[#E5484D] font-medium"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                Home
-              </motion.a>
-              {['About us', 'Services', 'Tour Listing', 'Supplier Registration'].map((item) => (
-                <motion.a
-                  key={item}
-                  href={`/${item.toLowerCase().replace(/\s+/g, '-')}`}
-                  className="text-gray-600 hover:text-[#E5484D] transition-colors duration-200"
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                >
-                  {item}
-                </motion.a>
-              ))}
-            </nav>
-
-            {/* Desktop Sign Up Button */}
-            <motion.div className="hidden md:block">
-              <Button 
-                className="bg-[#FFE4E5] text-[#E5484D] hover:bg-[#E5484D] hover:text-white transition-colors duration-300"
-                onClick={() => setIsSignupOpen(true)}
-              >
-                Sign Up
-              </Button>
-            </motion.div>
-
-            {/* Mobile Menu Button */}
-            <motion.button
-              className="md:hidden p-2 hover:bg-gray-100 rounded-lg"
-              onClick={() => setIsMenuOpen(!isMenuOpen)}
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              {isMenuOpen ? (
-                <X className="w-6 h-6 text-gray-600" />
-              ) : (
-                <Menu className="w-6 h-6 text-gray-600" />
-              )}
-            </motion.button>
-          </div>
-
-          {/* Mobile Menu */}
-          <motion.div
-            className={`md:hidden ${isMenuOpen ? 'block' : 'hidden'}`}
-            initial="closed"
-            animate={isMenuOpen ? "open" : "closed"}
-            variants={menuVariants}
-          >
-            <nav className="py-4 space-y-2">
-              <motion.a 
-                href="/"
-                className="block px-4 py-2 text-[#E5484D] font-medium rounded-lg hover:bg-gray-50"
-                variants={menuItemVariants}
-                whileTap={{ scale: 0.95 }}
-              >
-                Home
-              </motion.a>
-              {['About us', 'Services', 'Tour Listing', 'Supplier Registration'].map((item) => (
-                <motion.a
-                  key={item}
-                  href={`/${item.toLowerCase().replace(/\s+/g, '-')}`}
-                  className="block px-4 py-2 text-gray-600 rounded-lg hover:bg-gray-50 hover:text-[#E5484D] transition-colors duration-200"
-                  variants={menuItemVariants}
-                  whileTap={{ scale: 0.95 }}
-                >
-                  {item}
-                </motion.a>
-              ))}
-              <motion.div 
-                className="px-4 pt-2"
-                variants={menuItemVariants}
-              >
-                <Button 
-                  className="w-full bg-[#FFE4E5] text-[#E5484D] hover:bg-[#E5484D] hover:text-white transition-colors duration-300"
-                >
-                  Sign Up
-                </Button>
-              </motion.div>
-            </nav>
-          </motion.div>
-        </div>
-      </header>
-
+    <main className="min-h-screen bg-white">
+      <Header />
+      
       {/* Hero Section with 3D Tilt */}
       <ParallaxTilt
         tiltMaxAngleX={8}
@@ -814,66 +713,7 @@ export default function TourismPage() {
           </div>
         </section>
 
-
-      {/* Footer */}
-      <footer className="bg-[#E5484D] text-white mt-16">
-        <div className="container mx-auto px-4 py-12">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            <div>
-              <h3 className="font-bold text-xl mb-4">Malta Tours</h3>
-              <p className="text-white/80">
-                Immerse yourself in stunning visuals and captivating stories as you navigate through our website.
-              </p>
-            </div>
-            {[
-              {
-                title: 'About Us',
-                links: ['Home', 'About Us', 'Destination', 'Contact us']
-              },
-              {
-                title: 'Services',
-                links: ['Support', 'Explore', 'Get in Touch', 'Testimonials']
-              },
-              {
-                title: 'Contact Info',
-                content: [
-                  '20, Guze Ellul Mercer Str, Iklin',
-                  'IKL1371 MALTA',
-                  'maltaxplore@gmail.com',
-                  '123-456-789'
-                ]
-              }
-            ].map((section, index) => (
-              <div key={index}>
-                <h4 className="font-semibold text-lg mb-4">{section.title}</h4>
-                <ul className="space-y-2">
-                  {section.links ? (
-                    section.links.map((link) => (
-                      <li key={link}>
-                        <a 
-                          href="#" 
-                          className="text-white/80 hover:text-white transition-colors duration-300 hover:translate-x-1 inline-block"
-                        >
-                          {link}
-                        </a>
-                      </li>
-                    ))
-                  ) : (
-                    section.content?.map((item) => (
-                      <li key={item} className="text-white/80">
-                        {item}
-                      </li>
-                    ))
-                  )}
-                </ul>
-              </div>
-            ))}
-          </div>
-          <div className="border-t border-white/20 mt-12 pt-8 text-center">
-            <p className="text-white/60">&copy; maltaxplore 2024 , All Rights Reserved</p>
-          </div>
-        </div>
-      </footer>
+      <Footer />
     </main>
   );
 }
