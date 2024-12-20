@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 import { Button } from "@/components/ui/button"
 import { Menu, X } from 'lucide-react'
 import { motion } from 'framer-motion'
@@ -43,6 +43,7 @@ const navItems = [
   { name: 'Home', path: '/' },
   { name: 'About us', path: '/about-us' },
   { name: 'Tour Listing', path: '/tours' },
+  { name: 'Category Detail', path: '/category-detail' },
   { name: 'Contact', path: '/contact' },
   { name: 'Supplier Registration', path: '/supplier-registration' },
   { name: 'Metapass', path: '/metapass' },
@@ -52,6 +53,7 @@ const navItems = [
 export function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [isSignupOpen, setIsSignupOpen] = useState(false)
+  const { pathname } = useLocation()
 
   return (
     <header className="fixed top-0 w-full bg-white/80 backdrop-blur-md z-50 border-b border-gray-100">
@@ -78,9 +80,7 @@ export function Header() {
                 <Link
                   to={item.path}
                   className={`
-                    ${item.path === '/' 
-                      ? 'text-[#E5484D] font-medium' 
-                      : 'text-gray-600 hover:text-[#E5484D] transition-colors duration-200'}
+                    ${pathname === item.path ? 'text-red-500' : 'text-gray-600'} hover:text-red-500 transition-colors duration-300
                   `}
                 >
                   {item.name}
@@ -132,9 +132,7 @@ export function Header() {
                   to={item.path}
                   className={`
                     block px-4 py-2 rounded-lg 
-                    ${item.path === '/' 
-                      ? 'text-[#E5484D] font-medium' 
-                      : 'text-gray-600 hover:bg-gray-50 hover:text-[#E5484D] transition-colors duration-200'}
+                    ${pathname === item.path ? 'text-red-500' : 'text-gray-600'} hover:bg-gray-50 hover:text-red-500 transition-colors duration-200
                   `}
                 >
                   {item.name}
