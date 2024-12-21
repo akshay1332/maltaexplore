@@ -169,7 +169,7 @@ export default function CategoryDetailPage({ categoryId = 'malta-tour' }) {
   return (
     <div className="min-h-screen bg-[#fff5f5]">
       <Header />
-      <main className="container mx-auto px-4 py-8 md:px-6 space-y-12">
+      <main className="container mx-auto px-4 py-8 md:px-6 space-y-12 pt-20 sm:pt-24">
         {/* Hero Section */}
         <div className="grid md:grid-cols-2 gap-6">
           <div className="space-y-6">
@@ -358,4 +358,16 @@ export default function CategoryDetailPage({ categoryId = 'malta-tour' }) {
       <Footer />
     </div>
   )
+}
+
+export default function SpaAndWellness() {
+  return (
+    <div className="min-h-screen bg-[#f0f0f0] py-12">
+      <h1 className="text-4xl font-bold text-center mb-6">Spa & Wellness</h1>
+      <p className="text-lg text-center max-w-2xl mx-auto mb-12">
+        Indulge in relaxation and rejuvenation at our top spas and wellness centers, offering a range of treatments and therapies.
+      </p>
+      {/* Additional content goes here */}
+    </div>
+  );
 }

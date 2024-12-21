@@ -1,33 +1,54 @@
 'use client'
 
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "../components/ui/accordion"
-import { Button } from "../components/ui/button"
-import { Card, CardContent } from "../components/ui/card"
-import { Input } from "../components/ui/input"
-import { Textarea } from "../components/ui/textarea"
-import { MapPin, Mail, Phone } from 'lucide-react'
-import { ChatSection } from "../components/ChatSection"
-import { Header } from "../components/Header"
-import { Footer } from "../components/Footer"
+import { type FC } from 'react';
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
+import Banner from "@/components/banner";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent } from "@/components/ui/card";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import { MapPin, Mail, Phone } from 'lucide-react';
+import { ChatSection } from "@/components/ChatSection";
+import { Header } from "@/components/Header";
+import { Footer } from "@/components/Footer";
 
-export default function ContactPage() {
+const faqData = [
+  {
+    question: "What are your business hours?",
+    answer: "Our customer service team is available Monday through Friday, 9:00 AM to 6:00 PM (CET). During peak season (June-September), we also offer weekend support from 10:00 AM to 4:00 PM."
+  },
+  {
+    question: "How can I book a tour?",
+    answer: "You can book a tour directly through our website by selecting your preferred tour and date. Alternatively, you can contact our team via email or phone for assistance with group bookings or custom tour requests."
+  },
+  {
+    question: "What is your cancellation policy?",
+    answer: "We offer free cancellation up to 48 hours before your scheduled tour. For cancellations within 48 hours, a 50% fee applies. No-shows are charged in full. Special conditions may apply for private tours and peak season bookings."
+  },
+  {
+    question: "Do you offer private tours?",
+    answer: "Yes, we offer private tours for all our destinations. Private tours can be customized to your preferences and schedule. Please contact us directly to arrange a private tour."
+  },
+  {
+    question: "What payment methods do you accept?",
+    answer: "We accept all major credit cards (Visa, MasterCard, American Express), PayPal, and bank transfers. For group bookings, we can also arrange special payment terms."
+  }
+];
+
+const ContactPage: FC = () => {
   return (
     <div className="min-h-screen flex flex-col">
       <Header />
       
-      {/* Add padding top to account for fixed header */}
-      <div className="pt-16 md:pt-20">
+      <main className="flex-1">
         {/* Hero Section */}
-        <div className="relative h-[300px] flex items-center justify-center">
-          <img
-            src="https://s3-alpha-sig.figma.com/img/fc25/458a/3e1b4f4a9926b7f3d91b10f931a0568a?Expires=1735516800&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=Q3bswHrQWskga2vcPwHIvSTBWovCIByZaU5rh1ZDxkpb1IyeWDBPmBfxUXiCUMuHHzVtNm6CRkPWLv-Vmi~CkVIjS6Dbj4izvR19gEySHGDT2h9FEqqLsV8AGfXBRcTzCFOTheXedbBcRZANt7xuiY6qPw7GMqBYIMyDZfv5i12~o1w~XCOWgsPHW6PRwcZNK9budzAGLiGOLSK-~abL5zk279Pf5zzQgM~7L1J97DPpadwTkMYGTgC94va3tbMqcAseONRDQIhDvj~myu9RT3Iz-Bmy71UTspGFPwXerfLaho4sqDM1oxAIQIwaZp5URosmsipsVCdrLX3y4P41Eg__"
-            alt="Contact Us Background"
-            className="absolute inset-0 w-full h-full object-cover brightness-50"
-          />
-          <h1 className="text-4xl font-bold text-white relative z-10">Contact Us</h1>
+        <div className="pt-16 md:pt-20">
+          <Banner url="https://s3-alpha-sig.figma.com/img/fc25/458a/3e1b4f4a9926b7f3d91b10f931a0568a?Expires=1735516800&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=Q3bswHrQWskga2vcPwHIvSTBWovCIByZaU5rh1ZDxkpb1IyeWDBPmBfxUXiCUMuHHzVtNm6CRkPWLv-Vmi~CkVIjS6Dbj4izvR19gEySHGDT2h9FEqqLsV8AGfXBRcTzCFOTheXedbBcRZANt7xuiY6qPw7GMqBYIMyDZfv5i12~o1w~XCOWgsPHW6PRwcZNK9budzAGLiGOLSK-~abL5zk279Pf5zzQgM~7L1J97DPpadwTkMYGTgC94va3tbMqcAseONRDQIhDvj~myu9RT3Iz-Bmy71UTspGFPwXerfLaho4sqDM1oxAIQIwaZp5URosmsipsVCdrLX3y4P41Eg__">
+            <h1 className="text-4xl font-bold text-white">Contact Us</h1>
+          </Banner>
         </div>
 
-        <main className="container mx-auto px-4 py-12">
+        <div className="container mx-auto px-4 py-12">
           <div className="grid md:grid-cols-2 gap-12">
             {/* Contact Form */}
             <Card className="shadow-lg rounded-lg overflow-hidden">
@@ -93,36 +114,26 @@ export default function ContactPage() {
 
           {/* FAQ Section */}
           <div className="mt-16">
-            <h2 className="text-3xl font-bold text-center mb-8 text-gray-800">Frequently Asked Question</h2>
-            <Accordion type="single" collapsible className="max-w-3xl mx-auto">
-              <AccordionItem value="item-1" className="border-b border-gray-200">
-                <AccordionTrigger className="text-lg font-medium text-gray-700 hover:text-red-600">What services does MaltaXplore offer?</AccordionTrigger>
-                <AccordionContent className="text-gray-600">
-                  MaltaXplore provides comprehensive travel information about Malta, including top attractions,
-                  local experiences, accommodations, dining options, and booking services. Our platform is
-                  designed to help you plan and enjoy a seamless and memorable trip to the Maltese Islands.
-                </AccordionContent>
-              </AccordionItem>
-              <AccordionItem value="item-2" className="border-b border-gray-200">
-                <AccordionTrigger className="text-lg font-medium text-gray-700 hover:text-red-600">How can I make a booking through MaltaXplore?</AccordionTrigger>
-                <AccordionContent className="text-gray-600">
-                  You can easily make bookings through our website by selecting your desired service or tour
-                  and following the simple booking process. Our system is secure and user-friendly.
-                </AccordionContent>
-              </AccordionItem>
-              <AccordionItem value="item-3" className="border-b border-gray-200">
-                <AccordionTrigger className="text-lg font-medium text-gray-700 hover:text-red-600">Is my personal information secure on MaltaXplore?</AccordionTrigger>
-                <AccordionContent className="text-gray-600">
-                  Yes, we take data security seriously and use industry-standard encryption to protect your
-                  personal information. Our privacy policy ensures your data is handled safely and securely.
-                </AccordionContent>
-              </AccordionItem>
+            <h2 className="text-3xl font-bold text-center mb-8 text-gray-800">Frequently Asked Questions</h2>
+            <Accordion type="single" collapsible className="max-w-3xl mx-auto space-y-4">
+              {faqData.map((item, index) => (
+                <AccordionItem key={index} value={`item-${index + 1}`} className="bg-white rounded-lg border">
+                  <AccordionTrigger className="px-6 py-4 hover:no-underline hover:bg-gray-50">
+                    {item.question}
+                  </AccordionTrigger>
+                  <AccordionContent className="px-6 pb-4">
+                    {item.answer}
+                  </AccordionContent>
+                </AccordionItem>
+              ))}
             </Accordion>
           </div>
-        </main>
-      </div>
+        </div>
+      </main>
 
       <Footer />
     </div>
-  )
-}
+  );
+};
+
+export default ContactPage;

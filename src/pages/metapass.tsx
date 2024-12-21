@@ -1,10 +1,40 @@
 'use client'
 
-import { Header } from "../components/Header"
-import { Footer } from "../components/Footer"
-import { Button } from "../components/ui/button"
-import { Card, CardContent } from "../components/ui/card"
+import { Header } from "@/components/Header"
+import { Footer } from "@/components/Footer"
+import { Button } from "@/components/ui/button"
+import { Card, CardContent } from "@/components/ui/card"
 import { MapPin, Gift, Calendar, Star } from 'lucide-react'
+import Reviews from "@/components/review"
+import hero from '../../public/metapasshero.svg'
+import bg from '../../public/Rectangle 102.svg'
+
+const reviews = [
+  {
+    id: 1,
+    name: "Sarah Thompson",
+    rating: 5,
+    comment: "The MaltaPass was the best investment for our trip! We saved so much money and got to see all the major attractions without any hassle. The skip-the-line feature was especially helpful during peak hours.",
+    image: "https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg",
+    date: "December 15, 2023"
+  },
+  {
+    id: 2,
+    name: "Michael Chen",
+    rating: 4,
+    comment: "Great value for money! We used the pass for museums, boat tours, and historical sites. The only minor issue was that some attractions required advance booking.",
+    image: "https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg",
+    date: "December 10, 2023"
+  },
+  {
+    id: 3,
+    name: "Emma Rodriguez",
+    rating: 5,
+    comment: "Absolutely fantastic! The digital pass was so convenient, and the included audio guides really enhanced our experience at the historical sites. Would highly recommend!",
+    image: "https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg",
+    date: "December 5, 2023"
+  }
+];
 
 export function MetapassPage() {
   return (
@@ -29,7 +59,7 @@ export function MetapassPage() {
               </div>
               <div className="relative h-[300px] md:h-[400px]">
                 <img
-                  src="https://s3-alpha-sig.figma.com/img/fa5b/eba0/c22dbd6c8bf7b98e9ffd8e0f22620ecd?Expires=1735516800&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=hPMMRB06gxLIljS85d3ao530W9DoNawtUxIoZYsoG9aw9wErHotl6ZWz2geLvOaOTyjtvW-eQK1TGpcu~CPrnXub9H2mBemgusanhqjiCzQ8gJin910zLiV7hJ2lu8wUqTTwa0fvuoI3Yi7FvJ--UgkpvJOs~pIWYI4xmJbUFcqke3-r60MGPzaT9OTIINM8EykpMFtxvug5IUamsP42VRpqv6ZKO9WQlfvIsbrOM79E7hRFXV58AroGpDEuMWVt6uz-i7oPvPiIIP18nvKl7ZmvFTXk1McSNhGIkTmOIbVBMrUNB9vHWP8vtJ44vLPiLW0E3hOCJ8ZUBowvgfRUWw__"
+                  src={hero}
                   alt="Malta Harbor"
                   className="absolute inset-0 w-full h-full object-cover rounded-lg"
                 />
@@ -285,67 +315,14 @@ export function MetapassPage() {
           </div>
         </section>
 
-        {/* Testimonials Section */}
-        <section className="py-16 md:py-24 bg-white">
-          <div className="container mx-auto px-4">
-            <h2 className="text-3xl md:text-4xl font-bold text-center mb-16">
-              Real Travelers. Real Savings.
-            </h2>
-            <div className="grid md:grid-cols-3 gap-8">
-              {[
-                {
-                  quote: "It made everything so easy. No tickets to buy, just show the pass and go. Plus, the dining discounts were fantastic!",
-                  name: "Sarah",
-                  country: "United Kingdom",
-                  avatar: "https://s3-alpha-sig.figma.com/img/5aab/5459/786b226d5d70e39a1dfa0e817fee1e4d?Expires=1735516800&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=PwoSyRnJKwB5CLNnUtxhQcskjLgULnmGtRMsXPC6CEcG4aKv8LTxTpYc3b6JjW1TS88BnLHVYP6P4PNvGasTuIxJyaE9-cIIx-OEagn8dbqagydSBZO2eMLnNlvXVTWnx0uIAqmNPpACHsrtxYHS6o0aeaIrBtc3Y07VQrwYxfMeORxUoF3jvVODe~gI6DjA1byYMdcGmjjnL-B6qwmWJrO4hb90JiY40AYV-l6shCDL1imJmImLQ268Sk62u0ZjV7QFnHHvZ3MzBXHGsgmzNOnz9uJOVzhH5zNbU~tNs9UgpLaWgeaN71dIVYk~w06yCZnSRg9o90ZrkVGnedzWjA__"
-                },
-                {
-                  quote: "The MaltaPass was the best decision for our trip. We saved so much and discovered places we wouldn't have otherwise visited. A must-have!",
-                  name: "Marco",
-                  country: "Italy",
-                  avatar: "https://s3-alpha-sig.figma.com/img/025b/2128/cc0250d37d3c563c2cb95df2ca13eae5?Expires=1735516800&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=IxXK-GAE6gpsaUO2l9bduAaiE92vEEWIi6m~xOnJZrm5GOPoMe3-A5mg-2N1Cy0b-WbQtfZYo~AlTfmfe9lSJSwOu88KVOKNDDq3NE2zOsrvUE~kgSyuI2lfC87ocmcwB9prNsjmM64ank~au5KeHeSL9Dg7NyneHUUX3e4Q6bNwdiJhj2D-od8eoPSN3pExzJs2-KMxM4cbw9FrUkUPrWSn8peE78dG4jlegfXh2dpuxOBwaCG2jwUHKXGsJ03AoUyVxSZBTEOhS5AkNnDTbzju0o9qLwphIkpSK6gG9FeVOYKTr0V90q41HJj~MDda-CSHVIy2xaaY4EfuiKvKFg__"
-                },
-                {
-                  quote: "We loved it! It covered all the attractions we wanted to see and saved us a ton of money.",
-                  name: "Anna",
-                  country: "Germany",
-                  avatar: "https://s3-alpha-sig.figma.com/img/0aa6/aff8/0b22072108685276e4441c072c2ff85d?Expires=1735516800&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=QLKb7H5LHPVgFwiOZcaIND4zLLyCsMdS9x~0AhudgbAPmKnnuYhLLCSGvcwo4jTbwUyo6ofyc92g3pVTcWOLR6hxQf~cXvBmNxol9Sh2-~6FsMKwpRBm7M-9GYq0g00F~kqdc84uWxFU1NGMEynS-qf8GyJKXjgHpllRvKHxOcTH0Kh9ZHocyCjp48TWJpPjZeU42olHReWnG94dnp-zWcjOEe5pI-WKGwgAIKZudpnT5Of3voY-bU9qEP17QzHJDzcyEwIcWN~hMKhhuqn2zcwaZmu9Nmi4F8hW~x9Ip79Gh~bJncfPhAS8hJulKv8TWfp0ZkEgdpphx4HiJ5V4NA__"
-                }
-              ].map((testimonial, index) => (
-                <Card key={index}>
-                  <CardContent className="p-6">
-                    <div className="flex justify-between items-start mb-4">
-                      <span className="text-4xl text-gray-200">"</span>
-                      <div className="flex gap-1">
-                        {[...Array(5)].map((_, i) => (
-                          <Star key={i} className="w-5 h-5 text-[#E5484D] fill-current" />
-                        ))}
-                      </div>
-                    </div>
-                    <p className="text-gray-600 mb-6">{testimonial.quote}</p>
-                    <div className="flex items-center gap-4">
-                      <img
-                        src={testimonial.avatar}
-                        width={40}
-                        height={40}
-                        alt={testimonial.name}
-                        className="rounded-full"
-                      />
-                      <div>
-                        <h4 className="font-semibold">{testimonial.name}</h4>
-                        <p className="text-sm text-gray-600">{testimonial.country}</p>
-                      </div>
-                    </div>
-                  </CardContent>
-                </Card>
-              ))}
-            </div>
-            <div className="text-center mt-8">
-              <Button variant="outline">Read More Reviews</Button>
-            </div>
-          </div>
-        </section>
+        {/* Reviews Section */}
+        <Reviews 
+          title="What Pass Holders Say"
+          subtitle="Discover why travelers love using MaltaPass for their adventures"
+          reviews={reviews}
+        />
 
+      
         {/* CTA Section */}
         <section className="relative h-[500px] flex items-center justify-center text-white">
           <img

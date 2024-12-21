@@ -169,15 +169,14 @@ export default function CategoryDetailPage({ categoryId = 'malta-tour' }) {
   return (
     <div className="min-h-screen bg-[#fff5f5]">
       <Header />
-      <main className="container mx-auto px-4 py-8 md:px-6 space-y-12">
+      <main className="container mx-auto px-4 py-8 md:px-6 space-y-12 pt-20 sm:pt-24">
         {/* Hero Section */}
         <div className="grid md:grid-cols-2 gap-6">
           <div className="space-y-6">
-            <h1 className="text-3xl md:text-4xl font-bold text-gray-900">{category.title}</h1>
-            <div className="flex items-center gap-2">
-              {renderStars(category.rating)}
-              <span className="text-sm text-gray-600">({category.reviewCount} reviews)</span>
-            </div>
+            <h1 className="text-4xl font-bold text-center mb-6">Adventure Awaits</h1>
+            <p className="text-lg text-center max-w-2xl mx-auto mb-12">
+              Discover thrilling adventures in Malta, from hiking scenic trails to exploring hidden caves and diving into crystal-clear waters.
+            </p>
           </div>
         </div>
 

@@ -1,13 +1,15 @@
 import { useState, useRef, useEffect } from "react";
-import { Button } from "../components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "../components/ui/card";
-import { Input } from "../components/ui/input";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "../components/ui/select";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Input } from "@/components/ui/input";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Heart, MapPin, Share2, Star, ChevronLeft, ChevronRight, Menu, X } from 'lucide-react'
 import { motion, useAnimation, useInView } from 'framer-motion'
-import { SignupModal } from '../components/SignupModal';
+import { SignupModal } from '@/components/SignupModal';
 import { useSpring, animated, to } from '@react-spring/web';
+import bg from '../../public/Rectangle 102.svg'
 import ParallaxTilt from 'react-parallax-tilt';
+import Reviews from "@/components/review"
 import hero1 from '../assets/hero 1.jpg'
 import hero2 from '../assets/hero 2.png'
 import hero3 from '../assets/hero 3.png'
@@ -75,6 +77,33 @@ const menuItemVariants = {
   }
 };
 
+const reviews = [
+  {
+    id: 1,
+    name: "David Wilson",
+    rating: 5,
+    comment: "The guided tour of Valletta was incredible! Our guide was knowledgeable and passionate about Malta's history. The small group size made it very personal and engaging.",
+    image: "https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg",
+    date: "December 18, 2023"
+  },
+  {
+    id: 2,
+    name: "Sofia Martinez",
+    rating: 5,
+    comment: "The Blue Grotto boat tour was breathtaking! The water was crystal clear and the caves were stunning. The tour guides were very professional and made sure everyone was comfortable.",
+    image: "https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg",
+    date: "December 12, 2023"
+  },
+  {
+    id: 3,
+    name: "James Parker",
+    rating: 4,
+    comment: "Great experience at the ancient temples! The audio guide was very informative, and the sites were well-preserved. Would have loved a bit more time at each location though.",
+    image: "https://images.pexels.com/photos/1222271/pexels-photo-1222271.jpeg",
+    date: "December 8, 2023"
+  }
+];
+
 export function TourismPage() {
   const [adults, setAdults] = useState(1)
   const [children, setChildren] = useState(0)
@@ -92,24 +121,6 @@ export function TourismPage() {
       mainControls.start("visible")
     }
   }, [isInView, mainControls])
-
-  const reviews = [
-    {
-      text: "We had the most amazing time! Booking through MaltaXplore was easy and seamless. Highly recommend the sunset boat tour!",
-      author: "Sarah",
-      country: "United Kingdom"
-    },
-    {
-      text: "MaltaXplore made our trip unforgettable. We loved the restaurant recommendations and the personal touch!",
-      author: "Marco",
-      country: "Italy"
-    },
-    {
-      text: "From the moment we arrived, everything was perfectly planned. Thanks to MaltaXplore, we made the most of every day!",
-      author: "Anna",
-      country: "Germany"
-    }
-  ]
 
   const adventures = [
     {
@@ -241,11 +252,10 @@ export function TourismPage() {
         >
           <div className="flex flex-col sm:flex-row items-start sm:items-center gap-3 sm:gap-4 w-full sm:w-auto">
             <div className="flex items-center">
-              {[1, 2, 3, 4].map((star) => (
+              {[1, 2, 3, 4, 5].map((star) => (
                 <Star key={star} className="w-4 h-4 sm:w-5 sm:h-5 fill-[#E5484D] text-[#E5484D]" />
               ))}
-              <Star className="w-4 h-4 sm:w-5 sm:h-5 fill-[#E5484D]/50 text-[#E5484D]" />
-              <span className="ml-2 text-sm sm:text-base text-gray-600">4.5 (235 review)</span>
+              <span className="ml-2 text-sm sm:text-base text-gray-600">5 (235 review)</span>
             </div>
             <div className="flex items-center gap-2 text-sm sm:text-base text-gray-600">
               <MapPin className="w-4 h-4" />
@@ -482,65 +492,11 @@ export function TourismPage() {
       </section>
 
       {/* Reviews Section */}
-      <section ref={reviewsRef} className="bg-[#FFF0F0] py-16">
-        <div className="container mx-auto px-4">
-          <motion.h2 
-            className="text-3xl font-bold text-center mb-12 text-[#E5484D]"
-            initial={{ opacity: 0, y: 20 }}
-            animate={mainControls}
-            transition={{ duration: 0.5, delay: 0.2 }}
-          >
-            What Our Guests Are Saying
-          </motion.h2>
-          <motion.div 
-            className="grid md:grid-cols-3 gap-8"
-            variants={{
-              hidden: { opacity: 0 },
-              visible: {
-                opacity: 1,
-                transition: {
-                  staggerChildren: 0.2
-                }
-              }
-            }}
-            initial="hidden"
-            animate={mainControls}
-          >
-            {reviews.map((review, index) => (
-              <motion.div
-                key={index}
-                variants={{
-                  hidden: { opacity: 0, y: 20 },
-                  visible: { opacity: 1, y: 0 }
-                }}
-              >
-                <Card className="bg-white border-none shadow-lg">
-                  <CardContent className="p-6">
-                    <div className="flex gap-1 mb-4">
-                      {[...Array(5)].map((_, i) => (
-                        <Star key={i} className="w-5 h-5 fill-[#E5484D] text-[#E5484D]" />
-                      ))}
-                    </div>
-                    <p className="text-gray-600 mb-4">"{review.text}"</p>
-                    <div className="flex items-center gap-3">
-                      <div className="w-10 h-10 rounded-full bg-gray-200" />
-                      <div>
-                        <p className="font-semibold text-[#E5484D]">{review.author}</p>
-                        <p className="text-sm text-gray-500">{review.country}</p>
-                      </div>
-                    </div>
-                  </CardContent>
-                </Card>
-              </motion.div>
-            ))}
-          </motion.div>
-          <div className="text-center mt-10">
-            <Button className="bg-white text-[#E5484D] hover:bg-[#E5484D] hover:text-white transition-all duration-300">
-              Read More Reviews
-            </Button>
-          </div>
-        </div>
-      </section>
+      <Reviews 
+        title="Tour Experiences"
+        subtitle="Hear what our guests have to say about their unforgettable Malta tours"
+        reviews={reviews}
+      />
 
       {/* Top Picks */}
       <section className="py-16 md:py-24 bg-white">
