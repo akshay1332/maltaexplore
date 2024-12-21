@@ -204,7 +204,7 @@ export function MetapassPage() {
               <Card>
                 <CardContent className="p-0">
                   <img
-                    src="https://s3-alpha-sig.figma.com/img/0ba5/d115/d39f35375dc9bddc20829dedb63c492f?Expires=1735516800&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=Qx4zTdq2AR43xFoz31EyT3L2w2rEgkFZ83dq33LnQp7mGuQeRx9YLkeUEOb4bOW1H9RqgDpuGxdLu9XoEzgbuln17zccHXNrvlVWlYyqBbCHqKSDJKf6CQo3iKmaSHPLh9bW8nV7A4rl1ziU5o0UE4fRRd7OAWxCu3V2GGWupNEwOGL-I84zDJofnKkjMjSht2E~SiQ1bO3sG8BUjCIi8SANJavejrNgyxpCRdiYEPHRUW-iEfafspmixlbmRTJcT5AAXAaUWbfulbxFEcbkVNogFFfLyFwgPDK1-L3baY7pfW1Bgfe3nqM-8xX7j1b9AHBls87mt92pdJ1sLXZKBw__"
+                    src="https://s3-alpha-sig.figma.com/img/dbce/9435/6e5e9262be40a8ad6d3f8cf68622f4a9?Expires=1735516800&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=LNR0fmVW~-4QnBYLzjbvO5J86A-clTGdbK9W~VcH3Iz2nnmO3t3ROWLNk2bmmpHoyMHN60kN6T1KTM-ACNEte5xKMXbZfGM8u-d2dRnn00KqrV-nMpouVIMIj3xJ8wfpjJmnr0NQK54ev-ngESVP3QvzEL1bx6m3EeNSEYijOpachUvRAPJSE6LttH0DiJGSfcPmGfvREoabHES7O4~V6jA03l4Z-GAIcp53Z~-eYctty0T0LFq4quO20mXep-xJufkpIkaVaM-YSMFS0KsXp3pV2B6HLn2QMlM0WMcEBl87GVP~i8wPi4r0XDf1fgLDPAR02t3lzHv~zmw5gusMgA__"
                     width={600}
                     height={400}
                     alt="Malta Church"

@@ -169,7 +169,7 @@ export default function CategoryDetailPage({ categoryId = 'malta-tour' }) {
   return (
     <div className="min-h-screen bg-[#fff5f5]">
       <Header />
-      <main className="container mx-auto px-4 py-8 md:px-6 space-y-12 pt-20 sm:pt-24">
+      <main className="container mx-auto px-4 py-8 md:px-6 space-y-12">
         {/* Hero Section */}
         <div className="grid md:grid-cols-2 gap-6">
           <div className="space-y-6">
