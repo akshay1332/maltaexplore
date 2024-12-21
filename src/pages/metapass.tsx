@@ -57,13 +57,13 @@ export function MetapassPage() {
                   making your journey hassle-free.
                 </p>
               </div>
-              <div className="relative h-[300px] md:h-[400px]">
+              <div className=" relative h-[300px] md:h-[400px]">
                 <img
                   src={hero}
                   alt="Malta Harbor"
                   className="absolute inset-0 w-full h-full object-cover rounded-lg"
                 />
-                <div className="absolute top-4 right-4 bg-white rounded-full p-4 text-[#E5484D] font-bold">
+                <div className="absolute right-4 top-4 md:right-[85%] md:top-[25%] w-[150px] h-[150px] md:w-[180px] md:h-[180px] bg-white rounded-full flex items-center justify-center text-[#E5484D] font-bold">
                   <div className="text-2xl">30%</div>
                   <div className="text-sm">UP TO OFF</div>
                 </div>

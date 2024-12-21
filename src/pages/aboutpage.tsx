@@ -189,7 +189,7 @@ const AboutPage: FC = () => {
             </div>
 
             {/* Overlay Title */}
-            <div className="absolute left-1/2 -translate-x-1/2 top-0 bg-white px-12 py-6 rounded-b-3xl shadow-md">
+            <div className="absolute left-1/2 -translate-x-1/2 top-0 bg-white px-12     mt-[-2rem] py-6 rounded-b-3xl shadow-md">
               <h2 className="text-4xl font-bold whitespace-nowrap">
                 We are on a mission
               </h2>
